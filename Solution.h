@@ -7,7 +7,9 @@ using namespace std;
 class Solution {
 
 public:
-	//problem 1
+	/**
+	*problem 1
+	*/
 	vector<int> twoSum(vector<int>& nums, int target) {
 		vector<int> ans;
 		int len = nums.size();
@@ -22,7 +24,9 @@ public:
 		}
 		return ans;
 	}
-	//problem 4
+	/**
+	*problem 4
+	*/
 	double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
 		vector<int> partial_merged;
 		int len1 = nums1.size();
