@@ -3,12 +3,13 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
+#include<map>
 using namespace std;
 class Solution {
 
 public:
 	/**
-	*problem 1
+	Problem 1
 	*/
 	vector<int> twoSum(vector<int>& nums, int target) {
 		vector<int> ans;
@@ -25,7 +26,44 @@ public:
 		return ans;
 	}
 	/**
-	*problem 4
+	Problem 3
+	*/
+	int lengthOfLongestSubstring(string s) {
+		int len = s.length();
+		int ans;
+		if (len == 0) {
+			ans = 0;//exist empty string
+		}
+		else {
+			ans = 1;// init as 1, because may be exist string length of 1
+		}
+		int i = 0;
+		int j = i + 1;
+		map<char, bool> m;
+		while (j < len) {
+			m[s.at(j - 1)] = true;//add to map, record exist char
+			if (m[s.at(j)]==false) {//this judge will add one pair to map
+				j++;
+				if (j == len) {//when reach to end of string,judge the last char of string
+					if (j - i>ans) {
+						ans = j - i;
+					}
+				}
+			}
+			else {
+				if (j - i > ans) {//update longest length
+					ans = j - i;
+				}
+				i++;
+				j = i + 1;
+				m.clear();
+			}
+		}
+		return ans;
+	}
+
+	/**
+	*Problem 4
 	*/
 	double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
 		vector<int> partial_merged;
