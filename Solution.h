@@ -4,12 +4,13 @@
 #include<vector>
 #include<algorithm>
 #include<map>
+#include<sstream>
 using namespace std;
 class Solution {
 
 public:
 	/**
-	Problem 1
+	Problem 1:Two Sum   
 	*/
 	vector<int> twoSum(vector<int>& nums, int target) {
 		vector<int> ans;
@@ -26,7 +27,7 @@ public:
 		return ans;
 	}
 	/**
-	Problem 3
+	Problem 3:Longest Substring Without Repeating Characters   
 	*/
 	int lengthOfLongestSubstring(string s) {
 		int len = s.length();
@@ -63,7 +64,7 @@ public:
 	}
 
 	/**
-	*Problem 4
+	*Problem 4: Median of Two Sorted Arrays   
 	*/
 	double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
 		vector<int> partial_merged;
@@ -117,6 +118,37 @@ res:
 		}
 		return ans;
 	}
+	/**
+	Problem 7:Reverse Integer
+	*/
+		int reverse(int x) {
+			//  -2147483648бл2147483647 [-2^31,2^31-1]
+			double ans = 0;//set to double type in case of overflow when calculate reverse number value
+			bool positive = true;
+			if (x < 0) {
+				positive = false;
+			}
+			stringstream ss;
+			ss << x;
+			string str, temp;
+			str = ss.str();
+			int len = str.length();
+			int start = positive ? 0 : 1;
+			int num_len = len - !positive;
+			for (int i = len - 1; i >= start; --i) {
+				ans = ans * 10 + str.at(i) - '0';
+			}
+			if (!positive) {
+				ans *= -1;
+			}
+			if (positive&&ans>pow(2, 31) - 1) {//positive overflow
+				ans = 0;
+			}
+			if (!positive&&ans<-pow(2, 31)) {//negative overflow
+				ans = 0;
+			}
+			return ans;
+		}
 };
 
 #endif

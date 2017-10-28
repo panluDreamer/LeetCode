@@ -2,6 +2,7 @@
 #include "Solution.h"
 #include "Problem2.h"
 using namespace std;
+#define INT_MIN (-2147483647 - 1)
 unsigned int swap_endian(unsigned int val) {
 	val = ((val << 8) & 0xFF00FF00 | ((val >> 8) & 0xFF00FF));
 	return (val << 16) | (val >> 16);
@@ -13,11 +14,16 @@ void print_list(ListNode * head) {
 	}
 }
 int main() {
-	string str("pwwkew");
+	//string str("pwwkew");
 	Solution s;
-	int ans = 0;
+	int a;
+	int temp = INT_MIN;
+	a = s.reverse(temp);
+	cout << "a = " << a << endl;
+
+	/*int ans = 0;
 	ans = s.lengthOfLongestSubstring(str);
-	cout << "ans = " << ans << endl;
+	cout << "ans = " << ans << endl;*/
 
 	//Problem2 problem2;
 	//ListNode * l1, *l2,*temp1,*temp2;
